@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Your Name</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Publications</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="bachelors.html">Bachelor's Degree</a></li>
+                <li><a href="masters.html">Master's Degree</a></li>
+                <li><a href="phd.html">PhD</a></li>
+                <li><a href="postdoctoral.html">Postdoctoral</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publication.html">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="stats">
+            <h2>Publications and Citations</h2>
+            <p><strong>Total Publications:</strong> <span id="total-publications">XX</span></p>
+            <p><strong>Total Citations:</strong> <span id="total-citations">XX</span></p>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="publication">
+                <img src="path/to/image4.jpg" alt="Publication Image 4">
+                <div class="publication-content">
+                    <h4><span class="pub-number">4.</span> <a href="link-to-publication-4">Title of Publication 4</a></h4>
+                    <p>Abstract of publication 4. This is a brief summary of the research, findings, and significance.</p>
+                </div>
+            </div>
+            <div class="publication">
+                <img src="path/to/image3.jpg" alt="Publication Image 3">
+                <div class="publication-content">
+                    <h4><span class="pub-number">3.</span> <a href="link-to-publication-3">Title of Publication 3</a></h4>
+                    <p>Abstract of publication 3. This is a brief summary of the research, findings, and significance.</p>
+                </div>
+            </div>
+            <div class="publication">
+                <img src="path/to/image2.jpg" alt="Publication Image 2">
+                <div class="publication-content">
+                    <h4><span class="pub-number">2.</span> <a href="link-to-publication-2">Title of Publication 2</a></h4>
+                    <p>Abstract of publication 2. This is a brief summary of the research, findings, and significance.</p>
+                </div>
+            </div>
+            <div class="publication">
+                <img src="path/to/image1.jpg" alt="Publication Image 1">
+                <div class="publication-content">
+                    <h4><span class="pub-number">1.</span> <a href="link-to-publication-1">Title of Publication 1</a></h4>
+                    <p>Abstract of publication 1. This is a brief summary of the research, findings, and significance.</p>
+                </div>
+            </div>
+            <!-- Add more publications as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Name</p>
+    </footer>
+
+    <script>
+        // Fetch the data from Google Scholar
+        async function fetchScholarData() {
+            try {
+                // This is a placeholder. Replace with the actual API call to fetch Google Scholar data
+                const response = await fetch('path/to/google-scholar-api');
+                const data = await response.json();
+
+                // Update the stats
+                document.getElementById('total-publications').textContent = data.totalPublications;
+                document.getElementById('total-citations').textContent = data.totalCitations;
+            } catch (error) {
+                console.error('Error fetching Google Scholar data:', error);
+            }
+        }
+
+        // Call the function to fetch and display Google Scholar data
+        fetchScholarData();
+    </script>
+</body>
+</html>
+
