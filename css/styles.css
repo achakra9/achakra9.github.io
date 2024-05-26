@@ -135,6 +135,10 @@ section h3 {
     text-decoration: underline;
 }
 
+.authors {
+    fint-style: italic;
+}
+
 footer {
     text-align: center;
     padding: 20px 0;
