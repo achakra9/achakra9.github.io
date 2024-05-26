@@ -136,7 +136,14 @@ section h3 {
 }
 
 .authors {
-    fint-style: italic;
+    font-style: italic;
+}
+
+.abstract-box {
+      border: 0px solid #000000;
+      padding: 1px;
+      border-radius: 2px;
+      background-color: #fdb915;
 }
 
 footer {
