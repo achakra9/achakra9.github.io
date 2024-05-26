@@ -105,8 +105,8 @@ section h3 {
 .publication img {
     width: 450px;
     height: 350px;
-    object-fit: contain;
-    border-radius: 4px 4px 4px 4px;
+    object-fit: fill;
+    border-radius: 2px 2px 2px 2px;
 }
 
 .publication-content {
