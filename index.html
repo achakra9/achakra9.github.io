@@ -7,6 +7,104 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMcP8EnKefY5e8KD4FSA8+2Jk++WX5JKpY8R6T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        @keyframes wavyGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
+            background-size: 200% 200%;
+            animation: wavyGradient 6s infinite;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 20px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fdfdfd;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: white;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .degree {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree h3 {
+            margin-top: 0;
+            color: #2f2f2f;
+        }
+
+        footer {
+            background-color: #2f2f2f;
+            /* background-color: #800000; */
+            /* background-color: #cd0707f9; */
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            margin-top: 5px;
+
+            font-size: 1.2rem;
+            /* font-weight: bold; */
+            font-family: 'Roboto', sans-serif;
+            /* text-transform: uppercase; */
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,9 +113,7 @@
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="html/cv.html">CV</a></li>
-                <li><a href="html/bachelors.html">Bachelor's Degree</a></li>
-                <li><a href="html/masters.html">Master's Degree</a></li>
-                <li><a href="html/phd.html">PhD</a></li>
+                <li><a href="html/education.html">Education</a></li>
                 <li><a href="html/postdoctoral.html">Postdoctoral</a></li>
                 <li><a href="html/research.html">Research</a></li>
                 <li><a href="html/publication.html">Publications</a></li>
@@ -28,65 +124,13 @@
 
     <main>
         <section id="highlights">
-            <h2>About</h2>
-            <p>Welcome to my personal webpage. I am currently a Postdoctoral research associate at the University of Southern California working in the area of Theoretical and Computational Chemistry. Prior to this, I was a graduate student at Michigan State University.</p>
-<!--
-	    <h3>Selected Publications</h3>
+            <h2>About Me</h2>
+            <p>Welcome! I am Arnab Chakraborty, a Postdoctoral Research Associate at the University of Southern      California, specializing in computational chemistry and quantum mechanics. So far, my research focuses in developing advanced methodologies in electronic structure theory, such as coupled-cluster, equation-of-motion coupled cluster, and density functional theories, to address challenging problems in molecular sciences.</p> 
+            <p>Currently, I am working on implementing density based theories in QChem. In addition, I am also exploring computational drug discovery techniques and machine learning applications to chemical and biological problems.</p>
 
-            <div class="publications-grid">
+            <h2>Let's Connect</h2>
+            <p>When I am not immersed in research or coding, I enjoy exploring advancements in machine learning, designing creative graphics with various open-source software, and looking up open-source projects. Feel free to reach out to collaborate or discuss exciting projects in computational chemistry and beyond!</p>
 
-                <div class="publication">
-                    <img src="images/tmm.svg" alt="Publication Image 1">
-                    <div class="publication-content">
-                        <h4><a href="https://pubs.aip.org/aip/jcp/article/157/13/134101/2841819">Benchmarking
-					the semi-stochastic CC(<i>P</i>;<i>Q</i>)
-					approach for singlet–triplet gaps in biradicals</a></h4>
-			<span class="space"> <br> </span>
-			<span class="authors"> <b>A. Chakraborty </b>, S. H. Yuwono, J. E. Deustua, J. Shen, and P. Piecuch </span>
-			<span class="joiurnal-name"><em>J. Chem. Phys.</em> 157, 134101 (2022) </span>
-
-			<p align="justify"><b>Abstract.</b> We recently proposed a semi-stochastic approach to converging high-level
-			                   coupled-cluster (CC) energetics, such as those obtained in the CCSDT
-					   calculations with singles, doubles, and triples (CCSDT), in which the
-					   deterministic CC(<i>P</i>;<i>Q</i>) framework is merged with the stochastic
-					   configuration interaction Quantum Monte Carlo propagations [J. E. Deustua,
-					   J. Shen, and P. Piecuch, <i>Phys. Rev. Lett.</i> <b>119</b>, 223003 (2017)].
-					   In this work, we investigate the ability of the semi-stochastic
-					   CC(<i>P</i>;<i>Q</i>) methodology to recover the CCSDT energies of the lowest
-					   singlet and triplet states and the corresponding singlet–triplet gaps of
-					   biradical systems using methylene, (HFH)<sup>−</sup>, cyclobutadiene,
-					   cyclopentadienyl cation, and trimethylenemethane as examples.</p>
-
-		</div>
-                </div>
-
-                <div class="publication">
-                    <div class="publication-content">
-                        <h4><a href="https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1817592">Accelerating
-					convergence of equation-of-motion coupled-cluster computations using the
-					semi-stochastic CC(<i>P</i>;<i>Q</i>) formalism</a></h4>
-			<span class="space"> <br> </span>
-			<span class="authors">S. H. Yuwono, <b> A. Chakraborty </b>, J. E. Deustua, J. Shen, and P. Piecuch </span>
-			<span class="joiurnal-name"><em>Mol. Phys.</em> <b>118</b>, e1817592 (2020) </span>
-   
-			<p align="justify"><b>Abstract.</b>The recently proposed approach to excited electronic states, in which
-			   the deterministic
-			   equation-of-motion coupled-cluster (EOMCC) framework is merged with stochastic configuration
-			   interaction Quantum Monte Carlo (CIQMC) computations [J.E. Deustua <i>et al</i>.,
-			   <i>J. Chem. Phys.</i> <b>150</b>, 111101 (2019)], is combined with the noniterative energy
-			   corrections derived from the CC(<i>P</i>;<i>Q</i>) formalism. By examining vertical excitations
-			   in CH<sup>+</sup> at the equilibrium and stretched geometries and adiabatic excitations
-			   in CH and CNC, we demonstrate that the resulting semi-stochastic CC(<i>P</i>;<i>Q</i>)
-			   methodology converges target high-level energetics, represented in this study by the
-			   EOMCC method with singles, doubles, and triples, in the early stages of CIQMC propagations.</p>
-   
-			   </div>
-                    <img src="images/eomccpq-abstract.svg" alt="Publication Image 2">
-                </div>
-
-            </div>
-
--->
         </section>
 
         <section id="contact">

@@ -11,57 +11,63 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
+            color: #333;
         }
 
         header {
-            background-color: #333;
+            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
+            background-size: 200% 200%;
+            animation: wavyGradient 6s infinite;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: center;
         }
 
         header h1 {
-            margin: 0;
+            margin: 0 0 20px;
+            font-size: 2rem;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
+            gap: 20px;
         }
 
         nav ul li a {
-            color: white;
             text-decoration: none;
+            color: #fdfdfd;
             font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: white;
         }
 
         main {
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+            gap: 20px; /* Space between grid items */
+            margin-top: 20px; /* Space above the grid */
         }
 
-        @media(max-width: 1024px) {
+        @media (max-width: 1024px) {
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
             }
         }
 
-        @media(max-width: 768px) {
+        @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr; /* 1 column on small screens */
             }
@@ -72,11 +78,12 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            border-radius: 8px;
         }
 
         .project img {
             width: 100%;
-            max-width: 300px; /* Adjusted for better fit with 3 columns */
+            max-width: 300px; /* Adjusted for better fit */
             height: auto;
             margin: 20px 0;
         }
@@ -86,22 +93,22 @@
             margin-bottom: 10px;
         }
 
-        .project-content p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .project-content a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
         footer {
+            background-color: #2f2f2f;
+            color: white;
             text-align: center;
             padding: 10px 0;
-            background-color: #333;
-            color: white;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -113,9 +120,7 @@
             <ul>
                 <li><a href="../index.html" class="active">Home</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="bachelors.html">Bachelor's Degree</a></li>
-                <li><a href="masters.html">Master's Degree</a></li>
-                <li><a href="phd.html">PhD</a></li>
+                <li><a href="education.html">Education</a></li>
                 <li><a href="postdoctoral.html">Postdoctoral</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="publication.html">Publications</a></li>
@@ -129,79 +134,59 @@
 
         <!-- Projects Grid -->
         <div class="projects-grid">
-
-            <!-- Project 1 -->
             <div class="project">
                 <a href="project1.html">
-                    <h2></h2>
-                    <img src="../images/project1-placeholder.png" alt="Project 1 Image">
+                    <h2>Project 1</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 1 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project1.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 1 goes here.</p>
+                <p><a href="project1.html">Learn More</a></p>
             </div>
 
-            <!-- Project 2 -->
             <div class="project">
                 <a href="project2.html">
-                    <h2>Project Title 2</h2>
-                    <img src="../images/project2-placeholder.png" alt="Project 2 Image">
+                    <h2>Project 2</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 2 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project2.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 2 goes here.</p>
+                <p><a href="project2.html">Learn More</a></p>
             </div>
 
-            <!-- Project 3 -->
             <div class="project">
                 <a href="project3.html">
-                    <h2>Project Title 3</h2>
-                    <img src="../images/project3-placeholder.png" alt="Project 3 Image">
+                    <h2>Project 3</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 3 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project3.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 3 goes here.</p>
+                <p><a href="project3.html">Learn More</a></p>
             </div>
 
-            <!-- Project 4 -->
             <div class="project">
                 <a href="project4.html">
-                    <h2>Project Title 4</h2>
-                    <img src="../images/project4-placeholder.png" alt="Project 4 Image">
+                    <h2>Project 4</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 4 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project4.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 4 goes here.</p>
+                <p><a href="project4.html">Learn More</a></p>
             </div>
 
-            <!-- Project 5 -->
             <div class="project">
                 <a href="project5.html">
-                    <h2>Project Title 5</h2>
-                    <img src="../images/project5-placeholder.png" alt="Project 5 Image">
+                    <h2>Project 5</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 5 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project5.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 5 goes here.</p>
+                <p><a href="project5.html">Learn More</a></p>
             </div>
 
-            <!-- Project 6 -->
             <div class="project">
                 <a href="project6.html">
-                    <h2>Project Title 6</h2>
-                    <img src="../images/project6-placeholder.png" alt="Project 6 Image">
+                    <h2>Project 6</h2>
+                    <img src="https://via.placeholder.com/300" alt="Project 6 Image">
                 </a>
-                <div class="project-content">
-                    <p>Project description goes here. Briefly explain what the project is about, the technologies used, and any special features. You can also mention the purpose of the project.</p>
-                    <p><a href="project6.html">Learn More</a></p>
-                </div>
+                <p>Brief description of Project 6 goes here.</p>
+                <p><a href="project6.html">Learn More</a></p>
             </div>
-
         </div>
 
     </main>

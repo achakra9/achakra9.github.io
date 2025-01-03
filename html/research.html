@@ -5,6 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research - Arnab Chakraborty</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        @keyframes wavyGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
+            background-size: 200% 200%;
+            animation: wavyGradient 6s infinite;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 20px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fdfdfd;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: white;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .degree {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree h3 {
+            margin-top: 0;
+            color: #2f2f2f;
+        }
+
+        footer {
+            background-color: #2f2f2f;
+            /* background-color: #800000; */
+            /* background-color: #cd0707f9; */
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            margin-top: 5px;
+
+            font-size: 1.2rem;
+            /* font-weight: bold; */
+            font-family: 'Roboto', sans-serif;
+            /* text-transform: uppercase; */
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,9 +111,9 @@
             <ul>
                 <li><a href="../index.html" class="active">Home</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="bachelors.html">Bachelor's Degree</a></li>
-                <li><a href="masters.html">Master's Degree</a></li>
-                <li><a href="phd.html">PhD</a></li>
+                <li><a href="education.html">Education</a></li>
+                <!-- <li><a href="masters.html">Master's Degree</a></li>
+                <li><a href="phd.html">PhD</a></li> -->
                 <li><a href="postdoctoral.html">Postdoctoral</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="publication.html">Publications</a></li>
