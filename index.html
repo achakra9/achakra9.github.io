@@ -89,7 +89,7 @@
             padding: 5px 0;
             margin-top: 5px;
 
-            font-size: 1.2rem;
+            font-size: 1rem;
             /* font-weight: bold; */
             font-family: 'Roboto', sans-serif;
             /* text-transform: uppercase; */
@@ -123,22 +123,32 @@
     </header>
 
     <main>
-        <section id="highlights">
-            <h2>About Me</h2>
-            <p>Welcome! I am Arnab Chakraborty, a Postdoctoral Research Associate at the University of Southern      California, specializing in computational chemistry and quantum mechanics. So far, my research focuses in developing advanced methodologies in electronic structure theory, such as coupled-cluster, equation-of-motion coupled cluster, and density functional theories, to address challenging problems in molecular sciences.</p> 
-            <p>Currently, I am working on implementing density based theories in QChem. In addition, I am also exploring computational drug discovery techniques and machine learning applications to chemical and biological problems.</p>
+        <section id="about-me" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+            <!-- Left Column: Text -->
+            <div style="flex: 1;">
+                <h2>About Me</h2>
+                <p>Welcome! I am Arnab Chakraborty, a Postdoctoral Research Associate at the University of Southern    California, specializing in computational chemistry and quantum mechanics. So far, my research focuses in developing advanced methodologies in electronic structure theory, such as coupled-cluster, equation-of-motion coupled cluster, and density functional theories, to address challenging problems in molecular sciences.</p>
+                <p>Currently, I am working on implementing density based theories in QChem. In addition, I am also exploring computational drug discovery techniques and machine learning applications to chemical and biological problems.</p>
+            </div>
+        
+            <!-- Right Column: Image -->
+            <div style="flex: 0 0 250px;">
+                <img src="images/arnab.png" alt="Arnab Chakraborty" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            </div>
+        </section>
 
+        <section id="highlights">
             <h2>Let's Connect</h2>
             <p>When I am not immersed in research or coding, I enjoy exploring advancements in machine learning, designing creative graphics with various open-source software, and looking up open-source projects. Feel free to reach out to collaborate or discuss exciting projects in computational chemistry and beyond!</p>
 
         </section>
 
-        <section id="contact">
+        <!-- <section id="contact">
             <h2>Contact Information</h2>
-            <p><strong>Name:</strong> Arnab Chakraborty</p>
-            <p><strong>Email:</strong> <a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></p>
-	    <p><strong>Personal:</strong> <a href="mailto:arnabc3792@gmail.com">arnabc3792@gmail.com</a></p> 
-        </section>
+            <p><strong>Name:</strong> Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a> </p>
+            <!-- <p><strong>Email:</strong> <a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></p> -->
+	    <!-- <p><strong>Personal:</strong> <a href="mailto:arnabc3792@gmail.com">arnabc3792@gmail.com</a></p>  -->
+        </section> -->
 
         <section id="social media">
         <div class="social-media">
@@ -152,7 +162,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Arnab Chakraborty</p>
+        <p>&copy; 2024 Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a></p>
     </footer>
 </body>
 </html>
