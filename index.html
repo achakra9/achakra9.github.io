@@ -1,171 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnab Chakraborty - Personal Webpage</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMcP8EnKefY5e8KD4FSA8+2Jk++WX5JKpY8R6T" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arnab Chakraborty</title>
 
-        @keyframes wavyGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
-            background-size: 200% 200%;
-            animation: wavyGradient 6s infinite;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
+  <style>
+    :root{
+      --bg: #0b0d12;          /* deep charcoal */
+      --panel: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --border: rgba(255,255,255,0.10);
+      --accent: #7c5cff;      /* subtle modern accent */
+      --shadow: 0 12px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1040px;
+    }
 
-        header h1 {
-            margin: 0 0 20px;
-            font-size: 2rem;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.18), transparent 60%),
+                  radial-gradient(1000px 600px at 90% 10%, rgba(0,200,255,0.10), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    a { color: inherit; text-decoration: none; }
+    a:focus { outline: 2px solid rgba(124,92,255,0.7); outline-offset: 3px; border-radius: 10px; }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fdfdfd;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    .container {
+      width: min(var(--max), 92vw);
+      margin: 0 auto;
+    }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: white;
-        }
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(11,13,18,0.65);
+      border-bottom: 1px solid var(--border);
+    }
 
-        main {
-            padding: 20px;
-        }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
 
-        .degree {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+    }
 
-        .degree h3 {
-            margin-top: 0;
-            color: #2f2f2f;
-        }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(124,92,255,0.18);
+    }
 
-        footer {
-            background-color: #2f2f2f;
-            /* background-color: #800000; */
-            /* background-color: #cd0707f9; */
-            color: white;
-            text-align: center;
-            padding: 5px 0;
-            margin-top: 5px;
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
 
-            font-size: 1rem;
-            /* font-weight: bold; */
-            font-family: 'Roboto', sans-serif;
-            /* text-transform: uppercase; */
-            letter-spacing: 1px;
-        }
+    nav a {
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
 
-        footer a {
-            color: #ff9800;
-            text-decoration: none;
-        }
+    nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border-color: var(--border);
+      transform: translateY(-1px);
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    nav a.active {
+      color: var(--text);
+      background: rgba(124,92,255,0.16);
+      border-color: rgba(124,92,255,0.35);
+    }
+
+    /* Layout */
+    main { padding: 40px 0 70px; }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 26px;
+      padding: 28px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      width: fit-content;
+      margin-bottom: 14px;
+    }
+
+    .kicker strong { color: var(--text); font-weight: 600; }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3.3vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.4px;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 600;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .btn.primary {
+      background: rgba(124,92,255,0.20);
+      border-color: rgba(124,92,255,0.42);
+    }
+
+    .btn.primary:hover {
+      background: rgba(124,92,255,0.28);
+      border-color: rgba(124,92,255,0.55);
+    }
+
+    .portrait {
+      display: grid;
+      place-items: center;
+    }
+
+    .portrait img {
+      width: min(260px, 100%);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.5);
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 22px 24px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 80ch;
+    }
+
+    /* Social */
+    .social {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .icon-link {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .icon-link:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .icon-link img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 22px 0;
+      margin-top: 40px;
+      background: rgba(11,13,18,0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--text);
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+
+    footer a:hover {
+      border-bottom-color: rgba(124,92,255,0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .portrait { order: -1; }
+      nav ul { justify-content: flex-start; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Arnab Chakraborty</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <!-- <li><a href="html/cv.html">CV</a></li> -->
-                <li><a href="html/education.html">Education</a></li>
-                <li><a href="html/postdoctoral.html">Postdoc</a></li>
-                <li><a href="html/research.html">Conferences</a></li>
-                <li><a href="html/publication.html">Publications</a></li>
-                <li><a href="html/projects.html">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="about-me" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-            <!-- Left Column: Text -->
-            <div style="flex: 1;">
-                <h2>About Me</h2>
-                <p>Welcome! I am Arnab Chakraborty, a Postdoctoral Research Associate at the University of Southern    California, specializing in computational chemistry and quantum mechanics. So far, my research focuses in developing advanced methodologies in electronic structure theory, such as coupled-cluster, equation-of-motion coupled cluster, and density functional theories, to address challenging problems in molecular sciences.</p>
-                <p>Currently, I am working on implementing density based theories in QChem. In addition, I am also exploring computational drug discovery techniques and machine learning applications to chemical and biological problems.</p>
-            </div>
-        
-            <!-- Right Column: Image -->
-            <div style="flex: 0 0 250px;">
-                <img src="images/arnab.png" alt="Arnab Chakraborty" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-            </div>
-        </section>
-
-        <section id="highlights">
-            <h2>Let's Connect</h2>
-            <p>When I am not immersed in research or coding, I enjoy exploring advancements in machine learning, designing creative graphics with various open-source software, and looking up open-source projects. Feel free to reach out to collaborate or discuss exciting projects in computational chemistry and beyond!</p>
-        </section>
-
-        <!-- <section id="contact">
-            <h2>Contact Information</h2>
-            <p><strong>Name:</strong> Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a> </p>
-            <p><strong>Email:</strong> <a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></p> -->
-	    <!-- <p><strong>Personal:</strong> <a href="mailto:arnabc3792@gmail.com">arnabc3792@gmail.com</a></p>  -->
-        <!-- </section> -->
-
-        <section id="social media">
-        <div class="social-media">
-            <a href="https://github.com/achakra9" target="_blank"><img src="images/github.svg" alt="GitHub"></a>
-            <a href="https://www.linkedin.com/in/achakra9" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn"></a>
-            <a href="https://twitter.com/achakra9" target="_blank"><img src="images/x.svg" alt="Twitter"></a>
-            <a href="https://www.instagram.com/relaxing_chakra" target="_blank"><img src="images/instagram.svg" alt="Instagram"></a>
+  <!-- Top navigation -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Site name">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Arnab Chakraborty</span>
         </div>
-	</section>
 
-    </main>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="html/education.html">Education</a></li>
+            <li><a href="html/postdoctoral.html">Postdoc</a></li>
+            <li><a href="html/research.html">Conferences</a></li>
+            <li><a href="html/publication.html">Publications</a></li>
+            <li><a href="html/projects.html">Projects</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2024 Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a> </p>
-        <p>
-	<a href='http://www.freevisitorcounters.com'>Freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=5bded2a168d6cc57c6b533a9a4f9b67a2d344233'></script>
-<script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/1288899/t/0"></script></p>
-    </footer>
+  <main class="container">
+    <!-- HERO -->
+    <section class="card hero" aria-label="Intro">
+      <div>
+        <div class="kicker">
+          <strong>Postdoctoral Research Associate</strong>
+          <span>•</span>
+          <span>University of Southern California</span>
+        </div>
+
+        <h1>Computational chemistry, electronic-structure methods, and scientific software.</h1>
+
+        <p class="subtitle">
+          I work on methodology development and high-performance implementations in electronic structure theory
+          (coupled-cluster, EOM-CC, and density functional methods), with interests in computational drug discovery
+          and machine learning for chemistry.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="html/projects.html">View Projects</a>
+          <a class="btn" href="mailto:arnabc20@usc.edu">Email Me</a>
+          <a class="btn" href="html/publication.html">Publications</a>
+        </div>
+      </div>
+
+      <div class="portrait">
+        <img src="images/arnab.png" alt="Arnab Chakraborty" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="card section" id="about">
+      <h2>About</h2>
+      <p>
+        Welcome! I am Arnab Chakraborty, a Postdoctoral Research Associate at the University of Southern California.
+        My research focuses on developing advanced methodologies in electronic-structure theory to address challenging
+        problems in molecular science, and on building robust software implementations for production quantum chemistry
+        codebases.
+      </p>
+    </section>
+
+    <!-- CONNECT -->
+    <section class="card section" id="connect">
+      <h2>Let’s connect</h2>
+      <p>
+        When I’m not immersed in research or coding, I enjoy exploring machine learning, designing scientific graphics
+        with open-source tools, and learning from open-source projects. Feel free to reach out to collaborate or chat.
+      </p>
+
+      <div class="social" aria-label="Social links">
+        <a class="icon-link" href="https://github.com/achakra9" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="images/github.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/in/achakra9" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="images/linkedin.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://twitter.com/achakra9" target="_blank" rel="noopener" aria-label="Twitter / X">
+          <img src="images/x.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://www.instagram.com/relaxing_chakra" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="images/instagram.svg" alt="" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Arnab Chakraborty</div>
+      <div><a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></div>
+    </div>
+
+    <!-- If you want minimalist: strongly consider removing the visitor counter scripts below -->
+    <!--
+    <div class="container" style="margin-top:10px; font-size: 0.9rem;">
+      <a href='http://www.freevisitorcounters.com'>Freevisitorcounters.com</a>
+      <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=...'></script>
+      <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/.../t/0"></script>
+    </div>
+    -->
+  </footer>
 </body>
 </html>
-
