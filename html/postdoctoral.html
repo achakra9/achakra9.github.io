@@ -1,156 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postdoctoral - Arnab Chakraborty</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postdoc — Arnab Chakraborty</title>
 
-        @keyframes wavyGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
-            background-size: 200% 200%;
-            animation: wavyGradient 6s infinite;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --border: rgba(255,255,255,0.10);
+      --accent: #7c5cff;
+      --shadow: 0 12px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1040px;
+    }
 
-        header h1 {
-            margin: 0 0 20px;
-            font-size: 2rem;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.18), transparent 60%),
+                  radial-gradient(1000px 600px at 90% 10%, rgba(0,200,255,0.10), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fdfdfd;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    a { color: inherit; text-decoration: none; }
+    a:focus { outline: 2px solid rgba(124,92,255,0.7); outline-offset: 3px; border-radius: 10px; }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: white;
-        }
+    .container { width: min(var(--max), 92vw); margin: 0 auto; }
 
-        main {
-            padding: 20px;
-        }
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(11,13,18,0.65);
+      border-bottom: 1px solid var(--border);
+    }
 
-        .degree {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
 
-        .degree h3 {
-            margin-top: 0;
-            color: #2f2f2f;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+    }
 
-        footer {
-            background-color: #2f2f2f;
-            /* background-color: #800000; */
-            /* background-color: #cd0707f9; */
-            color: white;
-            text-align: center;
-            padding: 5px 0;
-            margin-top: 5px;
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(124,92,255,0.18);
+    }
 
-            font-size: 1rem;
-            /* font-weight: bold; */
-            font-family: 'Roboto', sans-serif;
-            /* text-transform: uppercase; */
-            letter-spacing: 1px;
-        }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
 
-        footer a {
-            color: #ff9800;
-            text-decoration: none;
-        }
+    nav a {
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border-color: var(--border);
+      transform: translateY(-1px);
+    }
+
+    nav a.active {
+      color: var(--text);
+      background: rgba(124,92,255,0.16);
+      border-color: rgba(124,92,255,0.35);
+    }
+
+    main { padding: 40px 0 70px; }
+
+    .page-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+      letter-spacing: -0.35px;
+    }
+
+    .page-subtitle {
+      margin: 0 0 26px;
+      color: var(--muted);
+      max-width: 75ch;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      padding: 22px 24px;
+      margin-top: 16px;
+    }
+
+    .role-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .role-title {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: -0.2px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .org-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .org-row img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      padding: 6px;
+    }
+
+    .org {
+      margin: 0;
+      font-weight: 650;
+    }
+
+    .loc {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .detail-grid {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .detail-grid strong { color: var(--text); font-weight: 600; }
+
+    .summary {
+      margin-top: 12px;
+      color: var(--muted);
+      max-width: 90ch;
+    }
+
+    /* Social */
+    .social {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .icon-link {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .icon-link:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .icon-link img { width: 20px; height: 20px; opacity: 0.9; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 22px 0;
+      background: rgba(11,13,18,0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--text);
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+
+    footer a:hover { border-bottom-color: rgba(124,92,255,0.8); }
+
+    @media (max-width: 720px) {
+      nav ul { justify-content: flex-start; }
+      .meta { white-space: normal; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Postdoc</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html" class="active">Home</a></li>
-                <!-- <li><a href="cv.html">CV</a></li> -->
-                <li><a href="education.html">Education</a></li>
-                <!-- <li><a href="masters.html">Master's Degree</a></li>
-                <li><a href="phd.html">PhD</a></li> -->
-                <li><a href="postdoctoral.html">Postdoc</a></li>
-                <li><a href="research.html">Conferences</a></li>
-                <li><a href="publication.html">Publications</a></li>
-                <li><a href="projects.html">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="degree">
-            <h2>Postdoctoral Research Associate</h2>
-            <div style="display: flex; align-items: center;">
-                <img src="../images/usc_logo.png" alt="USC Logo" style="width: 50px; height: auto; margin-right: 10px;">
-                <h3 style="margin: 0;">University of Southern California | U.S.A</h3>
-            </div>
-            <p><strong>Duration: </strong> May 2024 - Present</p>
-            <p><strong>Advisor: </strong>Professor Anna I. Krylov</p>
-            
-            <!-- <p><strong>GPA:</strong> 4.0/4.0</p> -->
-            <p>
-                Working on implementing mixed-reference time-dependent density functional theory (MRSF-TDDFT) in QChem.
-            </p>
-        </section>
-        
-        <section id="social media">
-        <div class="social-media">
-            <a href="https://github.com/username" target="_blank"><img src="../images/github.svg" alt="GitHub"></a>
-            <a href="https://www.linkedin.com/in/username/" target="_blank"><img src="../images/linkedin.svg" alt="LinkedIn"></a>
-            <a href="https://twitter.com/username" target="_blank"><img src="../images/x.svg" alt="Twitter"></a>
-            <a href="https://www.instagram.com/username/" target="_blank"><img src="../images/instagram.svg" alt="Instagram"></a>
+  <!-- Top navigation -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Arnab Chakraborty</span>
         </div>
-	</section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a></p>
-    </footer>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a class="active" href="postdoctoral.html">Postdoc</a></li>
+            <li><a href="research.html">Conferences</a></li>
+            <li><a href="publication.html">Publications</a></li>
+            <li><a href="projects.html">Projects</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Postdoctoral Research</h1>
+    <p class="page-subtitle">
+      Current appointment and research focus.
+    </p>
+
+    <section class="card section">
+      <div class="role-top">
+        <h2 class="role-title">Postdoctoral Research Associate</h2>
+        <div class="meta">May 2024 — Present</div>
+      </div>
+
+      <div class="org-row">
+        <img src="../images/usc_logo.png" alt="University of Southern California logo" />
+        <div>
+          <p class="org">University of Southern California</p>
+          <p class="loc">U.S.A</p>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div><strong>Advisor:</strong> Professor Anna I. Krylov</div>
+        <div>
+          <strong>Focus:</strong> Implementing Mixed-Reference Spin-Flip TDDFT (MRSF-TDDFT) in Q-Chem, with validation and benchmarking.
+        </div>
+      </div>
+
+      <p class="summary">
+        I work on development and performance-conscious implementations of excited-state electronic structure methods,
+        with an emphasis on reliable, production-ready code and rigorous numerical validation.
+      </p>
+    </section>
+
+    <section class="card section" aria-label="Social links">
+      <h2 class="role-title" style="margin-bottom: 10px;">Connect</h2>
+      <p class="page-subtitle" style="margin: 0 0 14px;">
+        Follow my work or reach out.
+      </p>
+
+      <div class="social">
+        <a class="icon-link" href="https://github.com/achakra9" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="../images/github.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/in/achakra9" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="../images/linkedin.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://twitter.com/achakra9" target="_blank" rel="noopener" aria-label="Twitter / X">
+          <img src="../images/x.svg" alt="" />
+        </a>
+        <a class="icon-link" href="https://www.instagram.com/relaxing_chakra" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="../images/instagram.svg" alt="" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Arnab Chakraborty</div>
+      <div><a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></div>
+    </div>
+  </footer>
 </body>
 </html>
-
