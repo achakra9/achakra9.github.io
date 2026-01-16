@@ -1,217 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Arnab Chakraborty</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Arnab Chakraborty</title>
 
-        header {
-            background: linear-gradient(90deg, #ff0000, #f44a0d, #ffa500);
-            background-size: 200% 200%;
-            animation: wavyGradient 6s infinite;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        header h1 {
-            margin: 0 0 20px;
-            font-size: 2rem;
-        }
+  <style>
+    :root{
+      /* Light theme */
+      --bg: #f7f7fb;
+      --panel: #ffffff;
+      --text: #111827;       /* slate-900 */
+      --muted: #4b5563;      /* slate-600 */
+      --border: rgba(17,24,39,0.10);
+      --accent: #4f46e5;     /* indigo */
+      --shadow: 0 10px 30px rgba(17,24,39,0.08);
+      --radius: 18px;
+      --max: 1100px;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fdfdfd;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    body{
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 500px at 15% 0%, rgba(79,70,229,0.10), transparent 60%),
+        radial-gradient(800px 500px at 90% 10%, rgba(14,165,233,0.08), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: white;
-        }
+    a { color: inherit; text-decoration: none; }
+    a:focus { outline: 2px solid rgba(79,70,229,0.5); outline-offset: 3px; border-radius: 10px; }
 
-        main {
-            padding: 20px;
-        }
+    .container { width: min(var(--max), 92vw); margin: 0 auto; }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-            gap: 20px; /* Space between grid items */
-            margin-top: 20px; /* Space above the grid */
-        }
+    /* Top nav */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247,247,251,0.75);
+      border-bottom: 1px solid var(--border);
+    }
 
-        @media (max-width: 1024px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
-            }
-        }
+    .topbar-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
 
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr; /* 1 column on small screens */
-            }
-        }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+    }
 
-        .project {
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border-radius: 8px;
-        }
+    .brand-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(79,70,229,0.14);
+    }
 
-        .project img {
-            width: 100%;
-            max-width: 300px; /* Adjusted for better fit */
-            height: auto;
-            margin: 20px 0;
-        }
+    nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
 
-        .project h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+    nav a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
-        footer {
-            background-color: #2f2f2f;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 1rem;
-            margin-top: 20px;
-        }
+    nav a:hover{
+      color: var(--text);
+      background: rgba(17,24,39,0.04);
+      border-color: var(--border);
+      transform: translateY(-1px);
+    }
 
-        footer a {
-            color: #ff9800;
-            text-decoration: none;
-        }
+    nav a.active{
+      color: var(--text);
+      background: rgba(79,70,229,0.10);
+      border-color: rgba(79,70,229,0.22);
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    main { padding: 40px 0 70px; }
+
+    .page-title{
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+      letter-spacing: -0.35px;
+    }
+
+    .page-subtitle{
+      margin: 0 0 26px;
+      color: var(--muted);
+      max-width: 80ch;
+    }
+
+    /* Projects grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 1024px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 720px){
+      .grid{ grid-template-columns: 1fr; }
+      nav ul{ justify-content: flex-start; }
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .thumb{
+      height: 160px;
+      display: grid;
+      place-items: center;
+      background: rgba(17,24,39,0.02);
+      border-bottom: 1px solid var(--border);
+      padding: 14px;
+    }
+
+    .thumb img{
+      max-height: 140px;
+      max-width: 100%;
+      object-fit: contain;
+      opacity: 0.95;
+    }
+
+    .content{
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .title{
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: -0.15px;
+      line-height: 1.25;
+    }
+
+    .desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .links{
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(17,24,39,0.03);
+      border-color: rgba(17,24,39,0.14);
+    }
+
+    .btn.primary{
+      background: rgba(79,70,229,0.10);
+      border-color: rgba(79,70,229,0.22);
+      color: #1f2937;
+    }
+
+    .btn.primary:hover{
+      background: rgba(79,70,229,0.14);
+      border-color: rgba(79,70,229,0.30);
+    }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 22px 0;
+      background: rgba(247,247,251,0.75);
+      backdrop-filter: blur(10px);
+    }
+
+    footer .footer-inner{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    footer a{
+      color: var(--text);
+      border-bottom: 1px dashed rgba(17,24,39,0.35);
+    }
+
+    footer a:hover{ border-bottom-color: rgba(79,70,229,0.8); }
+  </style>
 </head>
+
 <body>
-
-    <header>
-        <h1>Projects</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html" class="active">Home</a></li>
-                <!-- <li><a href="cv.html">CV</a></li> -->
-                <li><a href="education.html">Education</a></li>
-                <li><a href="postdoctoral.html">Postdoc</a></li>
-                <li><a href="research.html">Conferences</a></li>
-                <li><a href="publication.html">Publications</a></li>
-                <li><a href="projects.html">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <div class="project">
-                <!-- <a href="ssccpq.html"> -->
-                    <h2>Semi-stochastic CC(<i>P</i>;<i>Q</i>)</h2>
-                    <img src="../images/ssccpq.svg" alt="Project 1 Image" style="width: 300px; height: auto;">
-                <!-- </a> -->
-                <p align="justify">The recently proposed approach to excited electronic states, in which
-                    the deterministic
-                    equation-of-motion coupled-cluster (EOMCC) framework is merged with stochastic configuration
-                    interaction Quantum Monte Carlo (CIQMC) computations [J.E. Deustua <i>et al</i>.,
-                    <i>J. Chem. Phys.</i> <b>150</b>, 111101 (2019)], is combined with the noniterative energy
-                    corrections derived from the CC(<i>P</i>;<i>Q</i>) formalism. By examining vertical excitations
-                    in CH<sup>+</sup> at the equilibrium and stretched geometries and adiabatic excitations
-                    in CH and CNC, we demonstrate that the resulting semi-stochastic CC(<i>P</i>;<i>Q</i>)
-                    methodology converges target high-level energetics, represented in this study by the
-                    EOMCC method with singles, doubles, and triples, in the early stages of CIQMC propagations.
-                <a href="https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1817592">Read More</a></p>
-                <p align="justify">We recently proposed a semi-stochastic approach to converging high-level
-                    coupled-cluster (CC) energetics, such as those obtained in the CCSDT
-            calculations with singles, doubles, and triples (CCSDT), in which the
-            deterministic CC(<i>P</i>;<i>Q</i>) framework is merged with the stochastic
-            configuration interaction Quantum Monte Carlo propagations [J. E. Deustua,
-            J. Shen, and P. Piecuch, <i>Phys. Rev. Lett.</i> <b>119</b>, 223003 (2017)].
-            In this work, we investigate the ability of the semi-stochastic
-            CC(<i>P</i>;<i>Q</i>) methodology to recover the CCSDT energies of the lowest
-            singlet and triplet states and the corresponding singlet–triplet gaps of
-            biradical systems using methylene, (HFH)<sup>−</sup>, cyclobutadiene,
-            cyclopentadienyl cation, and trimethylenemethane as examples. <a href="https://pubs.aip.org/aip/jcp/article/157/13/134101/2841819">Read More</a></p>
-            </div>
-
-            <div class="project">
-                <!-- <a href="ch3x.html"> -->
-                    <h2>H<sub>3</sub><sup>+</sup> formation from Methyl Halogens and Pseudohalogens</h2>
-                    <img src="../images/h3plus.png" alt="Project 2 Image" style="width: 500px; height: auto;">
-                <!-- </a> -->
-                <p align="justify">
-                    The formation of H<sub>3</sub><sup>+</sup> following the double ionization of small organic compounds via a roaming mechanism, which involves the generation of H<sub>2</sub> and subsequent proton abstraction, has recently garnered significant attention. Nonetheless, a cohesive model explaining trends in the yield of H<sub>3</sub><sup>+</sup> characterizing these unimolecular reactions is yet to be established. We report yield and femtosecond time-resolved measurements following the strongfield double ionization of CH<sub>3</sub>X molecules, where X = OD, Cl, NCS, CN, SCN, and I. These measurements, combined with double-ionization-potential equation-of-motion coupled-cluster ab initio calculations used to determine the geometries and energetics of CH<sub>3</sub>X<sup>2+</sup> dications, are employed to identify the key factors governing the formation of H<sub>3</sub><sup>+</sup> in certain doubly ionized CH<sub>3</sub>X species and its absence in others. We also carry out ab initio molecular dynamics simulations to obtain detailed microscopic insights into the mechanism, yields, and timescales of H<sub>3</sub><sup>+</sup> production. We find that the excess relaxation energy released after double ionization of CH<sub>3</sub>X molecules combined with substantial geometrical distortion that favors H<sub>2</sub> formation prior to proton abstraction boost the generation of H<sub>3</sub><sup>+</sup>. Our study provides useful guidelines for examining alternative sources of H<sub>3</sub><sup>+</sup> in the universe. <a href="https://www.nature.com/articles/s41467-024-55065-5">Read More</a></p>
-            </div>
-
-            <div class="project">
-                <!-- <a href="project3.html"> -->
-                    <h2>Parsing Quantum-Chemistry Outputs</h2>
-                    <img src="../images/parsing.svg" alt="Project 3 Image">
-                <!-- </a> -->
-                <p align="justify">This project aims to develop a collection of scripts for parsing output files generated by various quantum chemistry software packages. The scripts aim to extract and organize key computational results such as energies, molecular properties, and electronic structure data into user-friendly formats for better understanding. </p>
-                <p><a href="https://github.com/achakra9/parse-quantum-chemistry-outputs">Learn More</a></p>
-            </div>
-
-            <div class="project">
-                <!-- <a href="project4.html"> -->
-                    <h2>Expense tracker</h2>
-                    <img src="../images/budget-tracker.svg" alt="Project 4 Image">
-                <!-- </a> -->
-                <p align="justify">A user-friendly Python program designed to track and manage personal expenses through an intuitive graphical interface. This application enables seamless logging of expenses and generates informative weekly and monthly expense reports with visually appealing plots, enabling users to monitor and optimize their financial habits effectively.</p>
-                <p><a href="https://github.com/achakra9/budget-tracker">Learn More</a></p>
-            </div>
-
-            <div class="project">
-                <!-- <a href="project5.html"> -->
-                    <h2>Molecular Dynamics</h2>
-                    <img src="../images/md.svg" alt="Project 5 Image">
-                <!-- </a> -->
-                <p align="justify">Under construction.</p>
-                <p><a href="https://github.com/achakra9/molecular-dynamics">Learn More</a></p>
-            </div>
-
-            <div class="project">
-                <!-- <a href="project6.html"> -->
-                    <h2>Machine Learning</h2>
-                    <img src="../images/ml-ai.svg" alt="Project 6 Image">
-                <!-- </a> -->
-                <p align="justify">Under construction.</p>
-                <p><a href="https://github.com/achakra9/machineLearning">Learn More</a></p>
-            </div>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Arnab Chakraborty</span>
         </div>
 
-    </main>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="postdoctoral.html">Postdoc</a></li>
+            <li><a href="research.html">Conferences</a></li>
+            <li><a href="publication.html">Publications</a></li>
+            <li><a class="active" href="projects.html">Projects</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2024 Arnab Chakraborty | <a href="mailto:arnabc20@usc.edu">Email Me</a></p>
-    </footer>
+  <main class="container">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">
+      A selection of research and software projects. Some items are works in progress and will be expanded over time.
+    </p>
 
+    <div class="grid">
+      <article class="card">
+        <div class="thumb"><img src="../images/ssccpq.svg" alt="Semi-stochastic CC(P;Q) schematic" /></div>
+        <div class="content">
+          <h2 class="title">Semi-stochastic CC(<i>P</i>;<i>Q</i>)</h2>
+          <p class="desc">
+            Semi-stochastic CC(P;Q) methods combining deterministic EOM-CC ideas with CIQMC propagations to approach
+            high-level excited-state energetics efficiently.
+          </p>
+          <div class="links">
+            <a class="btn primary" href="https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1817592" target="_blank" rel="noopener">Paper 1</a>
+            <a class="btn" href="https://pubs.aip.org/aip/jcp/article/157/13/134101/2841819" target="_blank" rel="noopener">Paper 2</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="../images/h3plus.png" alt="H3+ formation project image" /></div>
+        <div class="content">
+          <h2 class="title">H<sub>3</sub><sup>+</sup> formation from methyl halogens &amp; pseudohalogens</h2>
+          <p class="desc">
+            Combined experiments, EOM-CC calculations, and ab initio molecular dynamics to understand roaming-driven
+            H<sub>3</sub><sup>+</sup> formation and its trends across CH<sub>3</sub>X species.
+          </p>
+          <div class="links">
+            <a class="btn primary" href="https://www.nature.com/articles/s41467-024-55065-5" target="_blank" rel="noopener">Nature Communications</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="../images/parsing.svg" alt="Parsing quantum chemistry outputs icon" /></div>
+        <div class="content">
+          <h2 class="title">Parsing quantum-chemistry outputs</h2>
+          <p class="desc">
+            Scripts and utilities to extract energies, properties, and electronic-structure data from common QC outputs
+            into clean, analysis-friendly formats.
+          </p>
+          <div class="links">
+            <a class="btn primary" href="https://github.com/achakra9/parse-quantum-chemistry-outputs" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="../images/budget-tracker.svg" alt="Expense tracker icon" /></div>
+        <div class="content">
+          <h2 class="title">Expense tracker</h2>
+          <p class="desc">
+            A Python GUI app to log expenses and generate weekly/monthly summaries with plots to help monitor and optimize
+            spending habits.
+          </p>
+          <div class="links">
+            <a class="btn primary" href="https://github.com/achakra9/budget-tracker" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="../images/md.svg" alt="Molecular dynamics icon" /></div>
+        <div class="content">
+          <h2 class="title">Molecular dynamics</h2>
+          <p class="desc">Under construction — notes, workflows, and examples as I build more experience with practical MD pipelines.</p>
+          <div class="links">
+            <a class="btn" href="https://github.com/achakra9/molecular-dynamics" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="../images/ml-ai.svg" alt="Machine learning icon" /></div>
+        <div class="content">
+          <h2 class="title">Machine learning</h2>
+          <p class="desc">Under construction — experiments and learning notes on ML for chemistry and scientific computing.</p>
+          <div class="links">
+            <a class="btn" href="https://github.com/achakra9/machineLearning" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Arnab Chakraborty</div>
+      <div><a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></div>
+    </div>
+  </footer>
 </body>
 </html>

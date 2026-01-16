@@ -5,20 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Education — Arnab Chakraborty</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b0d12;
-      --panel: rgba(255,255,255,0.06);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --border: rgba(255,255,255,0.10);
-      --accent: #7c5cff;
-      --shadow: 0 12px 40px rgba(0,0,0,0.45);
+      --bg: #f7f7fb;
+      --panel: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: rgba(17,24,39,0.10);
+      --accent: #4f46e5;
+      --shadow: 0 10px 30px rgba(17,24,39,0.08);
       --radius: 18px;
       --max: 1040px;
     }
@@ -26,32 +25,32 @@
     * { box-sizing: border-box; }
     html, body { height: 100%; }
 
-    body {
+    body{
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.18), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 10%, rgba(0,200,255,0.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(900px 500px at 15% 0%, rgba(79,70,229,0.10), transparent 60%),
+        radial-gradient(800px 500px at 90% 10%, rgba(14,165,233,0.08), transparent 55%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
     a { color: inherit; text-decoration: none; }
-    a:focus { outline: 2px solid rgba(124,92,255,0.7); outline-offset: 3px; border-radius: 10px; }
+    a:focus { outline: 2px solid rgba(79,70,229,0.5); outline-offset: 3px; border-radius: 10px; }
 
     .container { width: min(var(--max), 92vw); margin: 0 auto; }
 
-    /* Top nav */
-    .topbar {
+    .topbar{
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(11,13,18,0.65);
+      backdrop-filter: blur(10px);
+      background: rgba(247,247,251,0.75);
       border-bottom: 1px solid var(--border);
     }
 
-    .topbar-inner {
+    .topbar-inner{
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -59,7 +58,7 @@
       gap: 16px;
     }
 
-    .brand {
+    .brand{
       display: flex;
       align-items: center;
       gap: 10px;
@@ -67,15 +66,15 @@
       letter-spacing: 0.2px;
     }
 
-    .brand-dot {
+    .brand-dot{
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(124,92,255,0.18);
+      box-shadow: 0 0 0 6px rgba(79,70,229,0.14);
     }
 
-    nav ul {
+    nav ul{
       list-style: none;
       margin: 0;
       padding: 0;
@@ -85,56 +84,56 @@
       justify-content: flex-end;
     }
 
-    nav a {
+    nav a{
       padding: 8px 10px;
       border-radius: 12px;
       color: var(--muted);
       border: 1px solid transparent;
       transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
     }
 
-    nav a:hover {
+    nav a:hover{
       color: var(--text);
-      background: rgba(255,255,255,0.06);
+      background: rgba(17,24,39,0.04);
       border-color: var(--border);
       transform: translateY(-1px);
     }
 
-    nav a.active {
+    nav a.active{
       color: var(--text);
-      background: rgba(124,92,255,0.16);
-      border-color: rgba(124,92,255,0.35);
+      background: rgba(79,70,229,0.10);
+      border-color: rgba(79,70,229,0.22);
     }
 
     main { padding: 40px 0 70px; }
 
-    .page-title {
-      margin: 0 0 18px;
+    .page-title{
+      margin: 0 0 10px;
       font-size: clamp(1.8rem, 2.6vw, 2.4rem);
       letter-spacing: -0.35px;
     }
 
-    .page-subtitle {
+    .page-subtitle{
       margin: 0 0 26px;
       color: var(--muted);
       max-width: 75ch;
     }
 
-    .card {
+    .card{
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .edu-card {
+    .edu-card{
       padding: 22px 24px;
       margin-top: 16px;
     }
 
-    .edu-top {
+    .edu-top{
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -142,72 +141,70 @@
       flex-wrap: wrap;
     }
 
-    .degree {
+    .degree{
       margin: 0;
       font-size: 1.15rem;
       letter-spacing: -0.2px;
     }
 
-    .meta {
+    .meta{
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
       white-space: nowrap;
     }
 
-    .school-row {
+    .school-row{
       display: flex;
       align-items: center;
       gap: 12px;
       margin-top: 10px;
     }
 
-    .school-row img {
+    .school-row img{
       width: 44px;
       height: 44px;
       object-fit: contain;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
+      background: rgba(17,24,39,0.02);
       padding: 6px;
     }
 
-    .school {
+    .school{
       margin: 0;
       font-weight: 650;
     }
 
-    .location {
+    .location{
       margin: 2px 0 0;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .detail-grid {
+    .detail-grid{
       margin-top: 14px;
       display: grid;
-      grid-template-columns: 1fr;
       gap: 8px;
       color: var(--muted);
     }
 
-    .detail-grid strong { color: var(--text); font-weight: 600; }
+    .detail-grid strong{ color: var(--text); font-weight: 700; }
 
-    .summary {
+    .summary{
       margin-top: 12px;
       color: var(--muted);
       max-width: 90ch;
     }
 
-    /* Social */
-    .social {
+    .social{
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 14px;
     }
 
-    .icon-link {
+    .icon-link{
       width: 44px;
       height: 44px;
       display: inline-flex;
@@ -215,27 +212,27 @@
       justify-content: center;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      background: #fff;
       transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
     }
 
-    .icon-link:hover {
+    .icon-link:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.16);
+      background: rgba(17,24,39,0.03);
+      border-color: rgba(17,24,39,0.14);
     }
 
-    .icon-link img { width: 20px; height: 20px; opacity: 0.9; }
+    .icon-link img{ width: 20px; height: 20px; opacity: 0.9; }
 
-    footer {
+    footer{
       border-top: 1px solid var(--border);
       color: var(--muted);
       padding: 22px 0;
-      background: rgba(11,13,18,0.55);
+      background: rgba(247,247,251,0.75);
       backdrop-filter: blur(10px);
     }
 
-    footer .footer-inner {
+    footer .footer-inner{
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -244,23 +241,21 @@
       font-size: 0.95rem;
     }
 
-    footer a {
+    footer a{
       color: var(--text);
-      border-bottom: 1px dashed rgba(255,255,255,0.35);
+      border-bottom: 1px dashed rgba(17,24,39,0.35);
     }
 
-    footer a:hover { border-bottom-color: rgba(124,92,255,0.8); }
+    footer a:hover{ border-bottom-color: rgba(79,70,229,0.8); }
 
-    @media (max-width: 720px) {
-      nav ul { justify-content: flex-start; }
-      .meta { white-space: normal; }
-      .school-row img { width: 42px; height: 42px; }
+    @media (max-width: 720px){
+      nav ul{ justify-content: flex-start; }
+      .meta{ white-space: normal; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Top navigation -->
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
@@ -285,11 +280,8 @@
 
   <main class="container">
     <h1 class="page-title">Education</h1>
-    <p class="page-subtitle">
-      A quick snapshot of my academic background and research training.
-    </p>
+    <p class="page-subtitle">A quick snapshot of my academic background and research training.</p>
 
-    <!-- PhD -->
     <section class="card edu-card">
       <div class="edu-top">
         <h2 class="degree">Ph.D. — Theoretical &amp; Computational Chemistry</h2>
@@ -306,19 +298,15 @@
 
       <div class="detail-grid">
         <div><strong>Advisor:</strong> Professor Piotr Piecuch</div>
-        <div>
-          <strong>Thesis:</strong>
-          Development and Applications of Semi-Stochastic Coupled-Cluster Methods for Open-Shell Systems and Electronic Excitations in Molecules
-        </div>
+        <div><strong>Thesis:</strong> Development and Applications of Semi-Stochastic Coupled-Cluster Methods for Open-Shell Systems and Electronic Excitations in Molecules</div>
       </div>
 
       <p class="summary">
-        Worked on semi-stochastic coupled-cluster and equation-of-motion coupled-cluster methods, including
-        particle non-conserving electron attachment and ionization potential variants, alongside application-driven studies.
+        Worked on semi-stochastic coupled-cluster and equation-of-motion coupled-cluster methods, including particle non-conserving
+        electron attachment and ionization potential variants, alongside application-driven studies.
       </p>
     </section>
 
-    <!-- MSc -->
     <section class="card edu-card">
       <div class="edu-top">
         <h2 class="degree">M.Sc. — Chemistry</h2>
@@ -342,7 +330,6 @@
       </p>
     </section>
 
-    <!-- BSc -->
     <section class="card edu-card">
       <div class="edu-top">
         <h2 class="degree">B.Sc. — Chemistry</h2>
@@ -358,17 +345,14 @@
       </div>
 
       <p class="summary">
-        Built a strong foundation in chemistry through coursework and hands-on laboratory training, and developed early interests
+        Built a strong foundation in chemistry through coursework and laboratory training, and developed early interests
         in quantum mechanics and computational methods that shaped my later research direction.
       </p>
     </section>
 
-    <!-- Social -->
     <section class="card edu-card" aria-label="Social links">
       <h2 class="degree" style="margin-bottom: 10px;">Connect</h2>
-      <p class="page-subtitle" style="margin: 0 0 14px;">
-        Feel free to reach out or follow my work.
-      </p>
+      <p class="page-subtitle" style="margin: 0 0 14px;">Feel free to reach out or follow my work.</p>
 
       <div class="social">
         <a class="icon-link" href="https://github.com/achakra9" target="_blank" rel="noopener" aria-label="GitHub">
