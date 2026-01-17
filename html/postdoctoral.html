@@ -224,6 +224,37 @@
 
     .icon-link img{ width: 20px; height: 20px; opacity: 0.9; }
 
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(17,24,39,0.03);
+      border-color: rgba(17,24,39,0.14);
+    }
+
+    .btn.primary{
+      background: rgba(79,70,229,0.10);
+      border-color: rgba(79,70,229,0.22);
+      color: #1f2937;
+    }
+
+    .btn.primary:hover{
+      background: rgba(79,70,229,0.14);
+      border-color: rgba(79,70,229,0.30);
+    }
+
     footer{
       border-top: 1px solid var(--border);
       color: var(--muted);
@@ -299,7 +330,38 @@
       <div class="detail-grid">
         <div><strong>Advisor:</strong> Professor Anna I. Krylov</div>
         <div><strong>Focus:</strong> Implementing Mixed-Reference Spin-Flip TDDFT (MRSF-TDDFT) in Q-Chem, with validation and benchmarking.</div>
+        <!-- <div class="pill-row">
+        <span class="pill">MRSF-TDDFT</span>
+        <span class="pill">Q-Chem</span>
+        <span class="pill">Excited-state methods</span>
+        <span class="pill">Scientific software</span>
+        <span class="pill">HPC</span>
+      </div> -->
+
+      <ul>
+        <li>
+          Developed and integrated Mixed-Reference Spin-Flip TDDFT (MRSF-TDDFT) into the
+          Q-Chem electronic-structure package (released as part of Q-Chem 6.4 in December 2025), providing
+          excitation energies, oscillator strengths, and transition dipole moments.
+            <!-- <div class="links"> -->
+                <a class="btn primary" href="https://manual.q-chem.com/latest/sect_sftddft.html" target="_blank" rel="noopener">Q-Chem Manual</a>
+            <!-- </div> -->
+        </li>
+
+        <li>
+          Implemented and optimized core numerical components for MRSF-TDDFT calculations,
+          including the modification of iterative Davidson diagonalizer and performance-critical tensor
+          contractions.
+        </li>
+        
+        <li>
+          Currently developing advanced capabilities, including
+          analytic energy gradients, spin–orbit coupling, and
+          core–valence separation for MRSF-TDDFT in Q-Chem.
+        </li>
+      </ul>
       </div>
+
 
       <p class="summary">
         I work on development and performance-conscious implementations of excited-state electronic structure methods,
