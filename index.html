@@ -250,6 +250,31 @@
 
     .icon-link img{ width: 20px; height: 20px; opacity: 0.9; }
 
+    .affiliations{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+
+        
+        flex-wrap: nowrap;
+        white-space: nowrap;
+    }
+
+    .affiliations img{
+        height: 64px;      
+        width: auto;
+        opacity: 0.85;
+        /* filter: grayscale(100%); */
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .affiliations img:hover{
+        opacity: 1;
+        transform: translateY(-1px);
+    }
+
     footer{
       border-top: 1px solid var(--border);
       color: var(--muted);
@@ -275,10 +300,16 @@
 
     footer a:hover{ border-bottom-color: rgba(79,70,229,0.8); }
 
-    @media (max-width: 860px){
+    @media (max-width: 420px){
       .hero{ grid-template-columns: 1fr; }
       nav ul{ justify-content: flex-start; }
+      .affiliations img{height: 22px; }
     }
+    /* @media (max-width: 420px){
+  .affiliations img{
+    height: 22px;
+  }
+} */
   </style>
 </head>
 
@@ -331,6 +362,13 @@
 
       <div class="portrait">
         <img src="images/arnab.png" alt="Arnab Chakraborty" />
+
+        <div class="affiliations">
+            <img src="images/usclogo.png" alt="University of Southern California" />
+            <img src="images/msu_logo.png" alt="Michigan State University" />
+            <img src="images/iitk_logo.png" alt="IIT Kanpur" />
+            <img src="images/ucal_logo.png" alt="University of Calcutta" />
+        </div>
       </div>
     </section>
 
