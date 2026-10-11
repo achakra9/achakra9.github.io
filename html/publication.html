@@ -205,6 +205,42 @@
       opacity: 0.9;
     }
 
+    .scholar-link{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      max-width: 100%;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .scholar-link:hover{
+      border-color: #4285f4;
+      box-shadow: 0 4px 14px rgba(66,133,244,0.12);
+    }
+
+    .scholar-link:focus-visible{
+      outline: 3px solid #4285f4;
+      outline-offset: 4px;
+    }
+
+    .scholar-link img{
+      display: block;
+      width: 180px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .scholar-link span{
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
     /* Publication cards */
     .pub{
       display: grid;
@@ -373,38 +409,37 @@
 
     <section class="card stats" aria-label="Publication stats">
       <div class="stats-left">
-        <span class="pill"><strong>Publications:</strong> 4</span>
-        <span class="pill"><strong>Citations:</strong> 45</span>
+        <span class="pill"><strong>Publications listed:</strong> 4</span>
       </div>
 
-      <a class="btn primary"
-         href="https://scholar.google.com/citations?user=Xni_ubUAAAAJ&hl=en"
+      <a class="scholar-link"
+         href="https://scholar.google.com/citations?user=Xni_ubUAAAAJ&amp;hl=en&amp;sortby=pubdate"
          target="_blank" rel="noopener">
-        <img src="../images/scholaar.png" alt="" />
-        Google Scholar
+        <img src="../images/scholaar.png" alt="Google Scholar" width="1162" height="242" />
+        <span>View all publications &amp; current citations <span aria-hidden="true">↗</span></span>
       </a>
     </section>
 
     <!-- Publication 4 -->
     <article class="card pub">
       <div class="pub-media">
-        <img src="../images/MRSF-TOC.pdf" alt="MRSF-TDDFT publication image" />
+        <img src="../images/MRSF-TOC.png" alt="MRSF-TDDFT publication image" />
       </div>
 
       <div>
         <h2 class="pub-title">
           <span>4.</span>
-          <a href="https://doi.org/10.26434/chemrxiv.15002538/v2" target="_blank" rel="noopener">
-            New Implementation of Mixed-Reference Spin-Flip Time-Dependent Density Functional Theory and Application to Molecules with Variable Diradical Character and Conical Intersections
+          <a href="https://doi.org/10.1063/5.0340840" target="_blank" rel="noopener">
+            New implementation of mixed-reference spin-flip time-dependent density functional theory and application to molecules with variable diradical character and conical intersections
           </a>
         </h2>
 
         <div class="meta">
           <span class="authors">
-            A. Chakraborty, Z. Pei, Y. Shao, and Anna I. Krylov
+            <b>A. Chakraborty</b>, Z. Pei, Y. Shao, and A. I. Krylov
           </span>
           <span class="authors">
-            <em>ChemRxiv</em> (2026)
+            <em>J. Chem. Phys.</em> <b>165</b>, 104101 (2026)
           </span>
         </div>
 
@@ -414,14 +449,14 @@
             Mixed-reference spin-flip time-dependent density functional theory (MRSF-TDDFT) improves upon
             the original spin-flip TDDFT (SF-TDDFT) approach by expanding the configurational space of the
             response states via a mixed-reference reduced density matrix, specifically, an equal mixture of
-            the density matrices from the MS = +1 and MS = −1 components of the lowest triplet state.
+            the density matrices from the M<sub>S</sub> = +1 and M<sub>S</sub> = −1 components of the lowest triplet state.
             MRSF-TDDFT improves the description of the spin-flip target states and the respective energy
             differences and eliminates the problem of spin-contamination that often spoils the description
             of higher-lying states in SF-TDDFT. This article presents the theoretical framework and details
             of a new implementation of MRSF-TDDFT in the Q-Chem software package. The implementation includes
             calculations of energies and properties, including transition dipole moments, oscillator strengths,
             spin–orbit couplings, and density-matrix based analyses of the MRSF states and transitions. The
-            capabilities of the theory are illustrated by applications to diradicals and a reduced retinal model,
+            capabilities of the theory are illustrated by applications to diradicals, butadiene, and a reduced retinal model,
             the penta-2,4-dieniminium cation, used to evaluate the performance of electronic structure methods in
             describing conical intersections.
           </p>
