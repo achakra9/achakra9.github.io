@@ -1,413 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publications — Arnab Chakraborty</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- MathJax -->
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <style>
-    :root{
-      --bg: #f7f7fb;
-      --panel: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --border: rgba(17,24,39,0.10);
-      --accent: #4f46e5;
-      --shadow: 0 10px 30px rgba(17,24,39,0.08);
-      --radius: 18px;
-      --max: 1040px;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-
-    body{
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 500px at 15% 0%, rgba(79,70,229,0.10), transparent 60%),
-        radial-gradient(800px 500px at 90% 10%, rgba(14,165,233,0.08), transparent 55%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    a:focus { outline: 2px solid rgba(79,70,229,0.5); outline-offset: 3px; border-radius: 10px; }
-
-    .container { width: min(var(--max), 92vw); margin: 0 auto; }
-
-    /* Top nav */
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(247,247,251,0.75);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .topbar-inner{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 16px;
-    }
-
-    .brand{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 650;
-      letter-spacing: 0.2px;
-    }
-
-    .brand-dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(79,70,229,0.14);
-    }
-
-    nav ul{
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-    }
-
-    nav a{
-      padding: 8px 10px;
-      border-radius: 12px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    nav a:hover{
-      color: var(--text);
-      background: rgba(17,24,39,0.04);
-      border-color: var(--border);
-      transform: translateY(-1px);
-    }
-
-    nav a.active{
-      color: var(--text);
-      background: rgba(79,70,229,0.10);
-      border-color: rgba(79,70,229,0.22);
-    }
-
-    main { padding: 40px 0 70px; }
-
-    .page-title{
-      margin: 0 0 10px;
-      font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-      letter-spacing: -0.35px;
-    }
-
-    .page-subtitle{
-      margin: 0 0 26px;
-      color: var(--muted);
-      max-width: 80ch;
-    }
-
-    .card{
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    /* Stats row */
-    .stats{
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .stats-left{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      color: var(--muted);
-      font-weight: 650;
-    }
-
-    .pill{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(17,24,39,0.02);
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .pill strong{ color: var(--text); }
-
-    .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      font-weight: 750;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(17,24,39,0.03);
-      border-color: rgba(17,24,39,0.14);
-    }
-
-    .btn.primary{
-      background: rgba(79,70,229,0.10);
-      border-color: rgba(79,70,229,0.22);
-    }
-
-    .btn.primary:hover{
-      background: rgba(79,70,229,0.14);
-      border-color: rgba(79,70,229,0.30);
-    }
-
-    .btn img{
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      opacity: 0.9;
-    }
-
-    .scholar-link{
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      max-width: 100%;
-      padding: 14px 18px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: #fff;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .scholar-link:hover{
-      border-color: #4285f4;
-      box-shadow: 0 4px 14px rgba(66,133,244,0.12);
-    }
-
-    .scholar-link:focus-visible{
-      outline: 3px solid #4285f4;
-      outline-offset: 4px;
-    }
-
-    .scholar-link img{
-      display: block;
-      width: 180px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .scholar-link span{
-      color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.4;
-    }
-
-    /* Publication cards */
-    .pub{
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 18px;
-      padding: 18px;
-      margin-top: 16px;
-      align-items: start;
-    }
-
-    .pub-media{
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(17,24,39,0.02);
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      padding: 12px;
-    }
-
-    .pub-media img{
-      width: 100%;
-      height: auto;
-      max-height: 180px;
-      object-fit: contain;
-    }
-
-    .pub-title{
-      margin: 0;
-      font-size: 1.08rem;
-      letter-spacing: -0.15px;
-      line-height: 1.3;
-    }
-
-    .pub-title a{
-      border-bottom: 1px dashed rgba(17,24,39,0.35);
-    }
-    .pub-title a:hover{
-      border-bottom-color: rgba(79,70,229,0.8);
-    }
-
-    .meta{
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .meta .authors{
-      display: block;
-      margin-top: 6px;
-    }
-
-    .meta em{ font-style: italic; }
-
-    details{
-      margin-top: 12px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(17,24,39,0.02);
-      padding: 10px 12px;
-    }
-
-    summary{
-      cursor: pointer;
-      font-weight: 750;
-      color: var(--text);
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker{ display: none; }
-
-    .abstract{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    /* Social */
-    .social{
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .icon-link{
-      width: 44px;
-      height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #fff;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-    }
-
-    .icon-link:hover{
-      transform: translateY(-1px);
-      background: rgba(17,24,39,0.03);
-      border-color: rgba(17,24,39,0.14);
-    }
-
-    .icon-link img{ width: 20px; height: 20px; opacity: 0.9; }
-
-    footer{
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      padding: 22px 0;
-      background: rgba(247,247,251,0.75);
-      backdrop-filter: blur(10px);
-    }
-
-    footer .footer-inner{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.95rem;
-    }
-
-    footer a{
-      color: var(--text);
-      border-bottom: 1px dashed rgba(17,24,39,0.35);
-    }
-
-    footer a:hover{ border-bottom-color: rgba(79,70,229,0.8); }
-
-    @media (max-width: 860px){
-      .pub{ grid-template-columns: 1fr; }
-      nav ul{ justify-content: flex-start; }
-      .pub-media img{ max-height: 220px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Peer-reviewed publications by Arnab Chakraborty, with abstracts, paper links, and downloadable citations." />
+<title>Publications — Arnab Chakraborty</title>
+<link rel="stylesheet" href="../css/styles.css" />
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <div class="brand">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span>Arnab Chakraborty</span>
-        </div>
-
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="postdoctoral.html">Experience</a></li>
-            <li><a href="research.html">Talks</a></li>
-            <li><a class="active" href="publication.html">Publications</a></li>
-            <li><a href="projects.html">Projects</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1 class="page-title">Publications</h1>
-    <p class="page-subtitle">
-      Selected peer-reviewed publications. For the most up-to-date list, see Google Scholar.
-    </p>
-
-    <section class="card stats" aria-label="Publication stats">
+<a class="skip-link" href="#main">Skip to content</a><header class="topbar"><div class="container topbar-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ac.</span><span>Arnab Chakraborty</span></a><nav aria-label="Primary"><ul><li><a href="../index.html">Home</a></li><li><a href="../html/projects.html">Research</a></li><li><a href="../html/publication.html" class="active" aria-current="page">Publications</a></li><li><a href="../html/cv.html">CV</a></li><li><a href="../html/about.html">About</a></li></ul></nav></div></header>
+<main class="container" id="main">
+<div class="page-heading"><p class="eyebrow">Selected work</p><h1>Publications</h1><p class="lead">Electronic-structure theory, excited states, and molecular science.</p></div><section class="card stats" aria-label="Publication stats">
       <div class="stats-left">
         <span class="pill"><strong>Publications listed:</strong> 4</span>
       </div>
@@ -418,17 +21,14 @@
         <img src="../images/scholaar.png" alt="Google Scholar" width="1162" height="242" />
         <span>View all publications &amp; current citations <span aria-hidden="true">↗</span></span>
       </a>
-    </section>
-
-    <!-- Publication 4 -->
-    <article class="card pub">
+    </section><section class="publication-year"><h2 class="year-label">2026</h2><article class="card pub">
       <div class="pub-media">
         <img src="../images/MRSF-TOC.png" alt="MRSF-TDDFT publication image" />
       </div>
 
       <div>
         <h2 class="pub-title">
-          <span>4.</span>
+
           <a href="https://doi.org/10.1063/5.0340840" target="_blank" rel="noopener">
             New implementation of mixed-reference spin-flip time-dependent density functional theory and application to molecules with variable diradical character and conical intersections
           </a>
@@ -443,7 +43,8 @@
           </span>
         </div>
 
-        <details>
+        <div class="publication-links"><a href="https://doi.org/10.1063/5.0340840" target="_blank" rel="noopener">Read paper ↗</a><a href="../assets/publication-2026.bib" download>BibTeX ↓</a><a href="https://doi.org/10.26434/chemrxiv.15002538/v2" target="_blank" rel="noopener">Preprint ↗</a></div>
+<details>
           <summary>Abstract</summary>
           <p class="abstract">
             Mixed-reference spin-flip time-dependent density functional theory (MRSF-TDDFT) improves upon
@@ -462,17 +63,14 @@
           </p>
         </details>
       </div>
-    </article>
-
-    <!-- Publication 3 -->
-    <article class="card pub">
+    </article></section><section class="publication-year"><h2 class="year-label">2025</h2><article class="card pub">
       <div class="pub-media">
         <img src="../images/h3plus.png" alt="H3+ formation publication image" />
       </div>
 
       <div>
         <h2 class="pub-title">
-          <span>3.</span>
+
           <a href="https://www.nature.com/articles/s41467-024-55065-5" target="_blank" rel="noopener">
             Factors governing H<sub>3</sub><sup>+</sup> Formation from Methyl Halogens and Pseudohalogens
           </a>
@@ -488,7 +86,8 @@
           </span>
         </div>
 
-        <details>
+        <div class="publication-links"><a href="https://www.nature.com/articles/s41467-024-55065-5" target="_blank" rel="noopener">Read paper ↗</a><a href="../assets/publication-2025.bib" download>BibTeX ↓</a></div>
+<details>
           <summary>Abstract</summary>
           <p class="abstract">
             The formation of H<sub>3</sub><sup>+</sup> following the double ionization of small organic compounds via a roaming mechanism, which involves
@@ -505,17 +104,14 @@
           </p>
         </details>
       </div>
-    </article>
-
-    <!-- Publication 2 -->
-    <article class="card pub">
+    </article></section><section class="publication-year"><h2 class="year-label">2022</h2><article class="card pub">
       <div class="pub-media">
         <img src="../images/tmm.svg" alt="Semi-stochastic CC(P;Q) biradicals publication image" />
       </div>
 
       <div>
         <h2 class="pub-title">
-          <span>2.</span>
+
           <a href="https://pubs.aip.org/aip/jcp/article/157/13/134101/2841819" target="_blank" rel="noopener">
             Benchmarking the semi-stochastic CC(<i>P</i>;<i>Q</i>) approach for singlet–triplet gaps in biradicals
           </a>
@@ -530,7 +126,8 @@
           </span>
         </div>
 
-        <details>
+        <div class="publication-links"><a href="https://pubs.aip.org/aip/jcp/article/157/13/134101/2841819" target="_blank" rel="noopener">Read paper ↗</a><a href="../assets/publication-2022.bib" download>BibTeX ↓</a></div>
+<details>
           <summary>Abstract</summary>
           <p class="abstract">
             We recently proposed a semi-stochastic approach to converging high-level
@@ -547,17 +144,14 @@
           </p>
         </details>
       </div>
-    </article>
-
-    <!-- Publication 1 -->
-    <article class="card pub">
+    </article></section><section class="publication-year"><h2 class="year-label">2020</h2><article class="card pub">
       <div class="pub-media">
         <img src="../images/eomccpq-abstract.svg" alt="EOMCC semi-stochastic CC(P;Q) publication image" />
       </div>
 
       <div>
         <h2 class="pub-title">
-          <span>1.</span>
+
           <a href="https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1817592" target="_blank" rel="noopener">
             Accelerating convergence of equation-of-motion coupled-cluster computations using the semi-stochastic CC(<i>P</i>;<i>Q</i>) formalism
           </a>
@@ -572,7 +166,8 @@
           </span>
         </div>
 
-        <details>
+        <div class="publication-links"><a href="https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1817592" target="_blank" rel="noopener">Read paper ↗</a><a href="../assets/publication-2020.bib" download>BibTeX ↓</a></div>
+<details>
           <summary>Abstract</summary>
           <p class="abstract">
             The recently proposed approach to excited electronic states, in which
@@ -588,34 +183,8 @@
           </p>
         </details>
       </div>
-    </article>
-
-    <section class="card" style="padding: 20px 22px; margin-top: 16px;" aria-label="Social links">
-      <h2 style="margin: 0 0 10px; font-size: 1.15rem; letter-spacing: -0.2px;">Connect</h2>
-      <p class="page-subtitle" style="margin: 0 0 14px;">Follow my work or reach out.</p>
-
-      <div class="social">
-        <a class="icon-link" href="https://github.com/achakra9" target="_blank" rel="noopener" aria-label="GitHub">
-          <img src="../images/github.svg" alt="" />
-        </a>
-        <a class="icon-link" href="https://www.linkedin.com/in/achakra9" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="../images/linkedin.svg" alt="" />
-        </a>
-        <a class="icon-link" href="https://twitter.com/achakra9" target="_blank" rel="noopener" aria-label="Twitter / X">
-          <img src="../images/x.svg" alt="" />
-        </a>
-        <a class="icon-link" href="https://www.instagram.com/relaxing_chakra" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="../images/instagram.svg" alt="" />
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Arnab Chakraborty</div>
-      <div><a href="mailto:arnabc20@usc.edu">arnabc20@usc.edu</a></div>
-    </div>
-  </footer>
+    </article></section>
+</main>
+<footer><div class="container footer-inner"><div><strong>Arnab Chakraborty</strong><span>Computational chemistry · Scientific software</span></div><div><a href="mailto:arnabc20@usc.edu">Email</a><a href="https://github.com/achakra9">GitHub</a><a href="https://scholar.google.com/citations?user=Xni_ubUAAAAJ&amp;hl=en">Google Scholar</a><span>© 2026</span></div></div></footer>
 </body>
 </html>
