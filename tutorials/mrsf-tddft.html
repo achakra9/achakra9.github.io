@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A detailed MRSF-TDDFT tutorial: configuration spaces, mixed-reference RDM, spin adaptation, dimensional transformations, and working response equations." />
+<title>Mixed-Reference Spin-Flip Time-Dependent Density Functional Theory (MRSF-TDDFT) — Arnab Chakraborty</title>
+<link rel="stylesheet" href="../css/styles.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a><header class="topbar"><div class="container topbar-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ac.</span><span>Arnab Chakraborty</span></a><nav aria-label="Primary"><ul><li><a href="../index.html">Home</a></li><li><a href="../html/projects.html">Research</a></li><li><a href="../html/publication.html">Publications</a></li><li><a href="index.html" class="active" aria-current="page">Tutorials</a></li><li><a href="../html/cv.html">CV</a></li><li><a href="../html/about.html">About</a></li></ul></nav></div></header>
+<main class="container" id="main">
+<div class="notebook-layout">
+  <aside class="notebook-sidebar">
+    <p class="eyebrow">Notebook contents</p>
+    <nav class="notebook-nav" aria-label="Notebook topics">
+      <a href="index.html">Overview</a>
+      <a href="mrsf-tddft.html" aria-current="page">Mixed-Reference Spin-Flip Time-Dependent Density Functional Theory (MRSF-TDDFT)</a>
+    </nav>
+  </aside>
+  <div class="notebook-reader">
+    <article class="notebook-page tutorial-article" id="mrsf-theory">
+<p class="eyebrow">Electronic structure · Theory notebook</p>
+<h1>Mixed-Reference Spin-Flip Time-Dependent Density Functional Theory (MRSF-TDDFT)</h1>
+<p class="lead">How MRSF extends the spin-flip configuration space, and how that changes the response equations.</p>
+<p>Here I explain the formulation we implemented in Q-Chem: a restricted open-shell reference, a collinear response kernel, and the Tamm–Dancoff approximation. The starting point is the mixed-reference approach introduced by Lee and coauthors in 2018. We use the dimensional transformations and pairing treatment from their 2019 gradient paper. <a href="#ref-1">[1]</a> <a href="#ref-2">[2]</a> <a href="#ref-3">[3]</a></p>
+<nav class="article-toc" aria-label="On this page"><a href="#sf-space">Spin-flip space</a><a href="#mixed-reference">Mixed reference</a><a href="#transformations">Dimensional transformations</a><a href="#response">Working equations</a><a href="#references-title">References</a></nav>
+
+<h2 id="sf-space">1. What is missing from the SF-TDDFT space?</h2>
+<p>For a molecule with strong diradical character, one closed-shell configuration may not describe the low-spin states well. SF-TDDFT starts from a triplet instead, with one α electron in each of the two singly occupied orbitals. Flipping an α electron to β spin gives configurations with \(M_S=0\). Some of these would count as double excitations from a closed-shell reference, even though they require only a single spin flip from the triplet. <a href="#ref-1">[1]</a></p>
+<div class="math-block">\[ |\Phi_{\bar a}^{i}\rangle=\hat a^\dagger_{a\beta}\hat a_{i\alpha}|\Phi_{M_S=+1}\rangle. \]</div>
+<p>The indices \(i,j\) label occupied orbitals and \(a,b\) label virtual orbitals in the relevant spin sector. A bar indicates β spin. In the diagrams, <strong>C</strong> denotes doubly occupied orbitals, <strong>O1 and O2</strong> the two singly occupied orbitals, and <strong>V</strong> unoccupied orbitals. Here, “core” means the doubly occupied space, including valence orbitals.</p>
+<figure class="tutorial-figure"><a href="images/sf-space.png"><img src="images/sf-space.png" alt="Figure 1 from Chakraborty et al.: the high-spin reference and OO, CO, OV, and CV configurations. Black arrows mark included configurations; gray arrows mark missing configurations." /></a><figcaption>SF-TDDFT configuration space. Figure 1 from our paper. <a href="#ref-1">[1]</a> Black configurations are included; gray ones are missing. Select the diagram to enlarge it.</figcaption></figure>
+<p>Look first at the OO block: it contains the paired configurations G and D and the open-shell configurations L and R. The gaps appear in the CO, OV, and CV blocks. A spin flip from just one triplet component cannot generate all the spin partners shown in gray. Without those partners, the calculated states need not have a definite total spin. This is the source of <strong>spin contamination</strong> in the incomplete SF space. <a href="#ref-1">[1]</a></p>
+<div class="tutorial-table"><table><caption>How the configuration classes change</caption><thead><tr><th>Class</th><th>Standard SF</th><th>Mixed-reference SF</th></tr></thead><tbody><tr><td>OO</td><td>G, D, L, R are present.</td><td>Both references generate these configurations; duplicates must be combined with the correct spin symmetry.</td></tr><tr><td>CO</td><td>Some spin partners are absent.</td><td>The second reference adds the missing partners.</td></tr><tr><td>OV</td><td>Some spin partners are absent.</td><td>The second reference adds the missing partners.</td></tr><tr><td>CV</td><td>The spin configuration set is incomplete.</td><td>The space expands, but some configurations remain absent.</td></tr></tbody></table></div>
+
+<h2 id="mixed-reference">2. Combining the two reference density matrices</h2>
+<p>MRSF starts with both spin components of the triplet, \(M_S=+1\) and \(M_S=-1\). Their reference density matrices enter with equal weights: <a href="#ref-1">[1]</a> <a href="#ref-2">[2]</a></p>
+<div class="math-block">\[ \rho_0^{\mathrm{MR}}(\mathbf{x},\mathbf{x}')=\frac12\left[\rho_0^{M_S=+1}(\mathbf{x},\mathbf{x}')+\rho_0^{M_S=-1}(\mathbf{x},\mathbf{x}')\right]. \]</div>
+<p>Here \(\mathbf{x}=(\mathbf r,\sigma)\) includes position and spin. We are averaging density matrices, not adding wavefunctions. The −1 component allows β → α flips and supplies spin partners that the +1 component alone cannot reach.</p>
+<figure class="tutorial-figure"><a href="images/mrsf-space.png"><img src="images/mrsf-space.png" alt="Figure 2 from Chakraborty et al.: MRSF configuration space. Black configurations come from the plus-one reference, red from the minus-one reference, blue from both, and gray configurations remain absent." loading="lazy" /></a><figcaption>MRSF-TDDFT configuration space. Figure 2 from our paper. <a href="#ref-1">[1]</a> Black: +1 reference; red: −1 reference; blue: both; gray: still missing. Compare the CO and OV blocks with the first diagram to see the added partners.</figcaption></figure>
+<h3>The mixed-spin construction</h3>
+<p>There is a complication: in the α/β basis, averaging the two reference density matrices gives half occupations for the open-shell spin-orbitals. The ensemble RDM is therefore not idempotent. To construct the response equations, the derivation introduces two mixed-spin functions for the open-shell part: <a href="#ref-1">[1]</a> <a href="#ref-2">[2]</a></p>
+<div class="math-block">\[ \begin{aligned}|s_1\rangle&=\frac{(1+\mathrm{i})|\alpha\rangle+(1-\mathrm{i})|\beta\rangle}{2},\\ |s_2\rangle&=\frac{(1-\mathrm{i})|\alpha\rangle+(1+\mathrm{i})|\beta\rangle}{2}.\end{aligned} \]</div>
+<p>The symbol \(\mathrm{i}\) is the imaginary unit. These functions are used to build an idempotent auxiliary reference. This step is more than a change of basis: rotating the original ensemble RDM would leave its fractional occupation eigenvalues unchanged. The response equations can then be separated into singlet and triplet problems.</p>
+
+<h2 id="transformations">3. Spin adaptation and dimensional transformations</h2>
+<p>Both references generate the OO configurations, so we need to combine them without double counting. With the phase convention used in our paper, the singlet OO amplitude takes the difference of the two diagonal open-shell components; the triplet takes their sum. The paired configurations G and D belong to the singlet block and do not contribute to the triplet block. <a href="#ref-1">[1]</a></p>
+<p>The standard SF amplitude array has \(N=n_{\mathrm{occ}}^\alpha n_{\mathrm{vir}}^\beta\) elements. Spin adaptation reduces the independent singlet and triplet amplitudes to \(N-1\) and \(N-3\), respectively. We use \(U^{(S)}\) and \(U^{(T)}\) to represent them in arrays with the same dimensions as the SF array. These are the dimensional transformations from Lee, Kim, Nakata, Lee, and Choi’s 2019 paper. <a href="#ref-3">[3]</a></p>
+<h2 id="response">4. The full orbital Hessian</h2>
+<p>After the transformation, we have \(A^{(k)(0)}\). We then add the pairing term \(C^{(k)}\) to obtain the full orbital Hessian. Here \(k=S\) denotes singlets and \(k=T\) denotes triplets: <a href="#ref-1">[1]</a> <a href="#ref-3">[3]</a></p>
+<div class="math-block">\[\begin{aligned}
+A_{\bar a i,\bar b j}^{(k)}
+&amp;=A_{\bar a i,\bar b j}^{(k)(0)}+C_{\bar a i,\bar b j}^{(k)}\\
+&amp;=U_{\bar a i}^{(k)}\left\{\delta_{ij}F_{\bar a\bar b}-\delta_{\bar a\bar b}F_{ji}-C_{\mathrm{HF}}(ij|\bar a\bar b)\right\}U_{\bar b j}^{(k)}+C_{\bar a i,\bar b j}^{(k)},\qquad k=S,T.
+\end{aligned}\]</div>
+<p>In this expression, \(F\) is the Kohn–Sham Fock matrix, \(C_{\mathrm{HF}}\) is the fraction of Hartree–Fock exchange, and \((pq|rs)\) is a two-electron integral in Mulliken notation. The \(U^{(k)}\) matrices perform the dimensional transformations discussed above. The superscript \((0)\) marks the Hessian before the pairing terms are added. <a href="#ref-1">[1]</a></p>
+<p>The part inside the braces is exactly the same as the collinear SF-TDDFT Hessian kernel under TDA: two Fock-matrix terms and an exact-exchange term. In MRSF, we apply the singlet or triplet transformations on either side and add \(C^{(k)}\). This is where the connection to SF-TDDFT is clearest, although the final matrix and its eigenvalues are different. <a href="#ref-1">[1]</a> <a href="#ref-3">[3]</a></p>
+<p>The pairing term \(C^{(k)}\) couples spin-paired configurations from the two reference components. We use the construction from the 2019 paper; the full expression is given there and in our implementation paper. <a href="#ref-1">[1]</a> <a href="#ref-3">[3]</a></p>
+<p>We then solve the singlet and triplet response problems separately to obtain the target states.</p>
+
+<section class="tutorial-references" aria-labelledby="references-title"><h2 id="references-title">References</h2><ol>
+<li id="ref-1">A. Chakraborty, Z. Pei, Y. Shao, and A. I. Krylov, “New implementation of mixed-reference spin-flip time-dependent density functional theory and application to molecules with variable diradical character and conical intersections,” <em>J. Chem. Phys.</em> <strong>165</strong>, 104101 (2026). <a href="https://doi.org/10.1063/5.0340840">doi:10.1063/5.0340840</a>. Source of the figures and working equations in this note.</li>
+<li id="ref-2">S. Lee, M. Filatov, S. Lee, and C. H. Choi, “Eliminating spin-contamination of spin-flip time dependent density functional theory within linear response formalism by the use of zeroth-order mixed-reference (MR) reduced density matrix,” <em>J. Chem. Phys.</em> <strong>149</strong>, 104101 (2018). <a href="https://doi.org/10.1063/1.5044202">doi:10.1063/1.5044202</a>. Original mixed-reference formulation.</li>
+<li id="ref-3">S. Lee, E. E. Kim, H. Nakata, S. Lee, and C. H. Choi, “Efficient implementations of analytic energy gradient for mixed-reference spin-flip time-dependent density functional theory (MRSF-TDDFT),” <em>J. Chem. Phys.</em> <strong>150</strong>, 184111 (2019). <a href="https://doi.org/10.1063/1.5086895">doi:10.1063/1.5086895</a>. Dimensional transformations and pairing construction used in the implementation discussed here.</li>
+</ol></section>
+</article>
+
+
+  </div>
+</div>
+</main>
+<footer><div class="container footer-inner"><div><strong>Arnab Chakraborty</strong><span>Molecules · Quantum materials · Scientific software</span></div><div><a href="mailto:arnabc20@usc.edu">Email</a><a href="https://github.com/achakra9">GitHub</a><a href="https://scholar.google.com/citations?user=Xni_ubUAAAAJ&amp;hl=en">Google Scholar</a><span>© 2026</span></div></div><nav class="container footer-nav" aria-label="Site directory"><a href="../index.html">Home</a><a href="../html/projects.html">Research</a><a href="../html/publication.html">Publications</a><a href="index.html">Tutorials</a><a href="../html/cv.html">CV</a><a href="../html/about.html">About</a><a href="../html/education.html">Education</a><a href="../html/postdoctoral.html">Experience</a><a href="../html/research.html">Conferences</a><a href="../html/phd.html">Ph.D.</a><a href="../html/masters.html">M.Sc.</a><a href="../html/bachelors.html">B.Sc.</a></nav></footer>
+</body>
+</html>

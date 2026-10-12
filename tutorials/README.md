@@ -1,6 +1,6 @@
 # Tutorial notebook
 
-The notebook currently contains only an Overview describing the plan. There are no placeholder topics. Each future tutorial will be a separate HTML page linked under **Notebook contents**.
+The notebook contains an Overview and `mrsf-tddft.html`, a detailed theory tutorial with figures, working equations, and references. Each tutorial is a separate HTML page linked under **Notebook contents**.
 
 ## Adding a tutorial
 
