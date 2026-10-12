@@ -909,3 +909,6 @@ footer{
   height:100%;
   object-fit:contain;
 }
+
+#preprints>.pub{margin-top:22px}
+#preprints,#journal-articles{scroll-margin-top:180px}
